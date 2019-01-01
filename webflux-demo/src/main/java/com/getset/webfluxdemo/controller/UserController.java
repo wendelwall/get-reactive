@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
 import java.time.Duration;
 
 @RestController
@@ -17,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public Mono<User> save(User user) {
+    public Mono<User> save(@RequestBody @Valid User user) {
         return this.userService.save(user);
     }
 
